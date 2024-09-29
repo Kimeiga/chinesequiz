@@ -1,0 +1,11 @@
+{
+    "headers": [
+      {
+        "source": "/dictionary/(.*).json.gz",
+        "headers": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Content-Encoding", "value": "gzip" }
+        ]
+      }
+    ]
+  }
