@@ -24,13 +24,18 @@
 		display: inline-flex;
 		flex-direction: column;
 		align-items: center;
+		margin-bottom: 1em;
 	}
 
 	.word-word {
-		font-size: 5rem;
+		font-size: 5em;
 	}
 
 	.word-definition {
 		text-align: center;
+	}
+
+	.word-pinyin {
+		margin-bottom: -0.5em;
 	}
 </style>

@@ -6,4 +6,6 @@ body {
 	/* font-family: "serif"; */
 	background: black;
 	color: white;
+
+	font-size: clamp(16px, calc(2px + 1vw), 24px);
 }
