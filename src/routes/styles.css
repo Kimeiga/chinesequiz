@@ -8,4 +8,6 @@ body {
 	color: white;
 
 	font-size: clamp(16px, calc(2px + 1vw), 24px);
+
+	font-family: serif, "PingFang SC", "PingFang TC", "PingFang HK";
 }
