@@ -189,7 +189,7 @@
 	.quiz-container {
 		margin-top: auto;
 		padding: 1rem;
-		margin-bottom: 1rem;
+		/* margin-bottom: 1rem; */
 		width: 100%;
 		display: flex;
 		flex-direction: column;
@@ -198,7 +198,7 @@
 
 	.question {
 		font-size: 1.2em;
-		margin-bottom: 15px;
+		/* margin-bottom: 15px; */
 		text-align: center;
 	}
 

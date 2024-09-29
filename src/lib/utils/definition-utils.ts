@@ -39,6 +39,14 @@ const getBestDefinition = (definitions: string[]): string => {
 	const regularDefs = definitions.filter(
 		(def) => !isVariantDefinition(def) && !def.startsWith('(bound form)')
 	);
+
+	console.log('regularDefs', regularDefs);
+	console.log('definitions', definitions);
+	console.log(
+		'definitions2',
+		definitions.filter((def) => !isVariantDefinition(def))
+	);
+
 	if (regularDefs.length > 0) {
 		return regularDefs[0];
 	}
@@ -98,9 +106,11 @@ const getPrimaryDefinition2 = (
 		return exceptions[word];
 	}
 
-	if (!word) return '';
-	if (!numericPinyin) return '';
-	if (!definition) return '';
+	if (!word || !numericPinyin || !definition) return '';
+
+	console.log(word);
+	console.log(numericPinyin);
+	console.log(definition);
 
 	let rawDefinition: string;
 
@@ -111,17 +121,22 @@ const getPrimaryDefinition2 = (
 		// It's a multi-pronunciation entry
 		const entries = definition as MultiPronunciationEntry;
 
-		// Try to find an entry with matching numeric pinyin
-		const matchingEntry = entries.find((entry) => entry[1] === numericPinyin);
+		// Try to find entries with matching numeric pinyin
+		const matchingEntries = entries.filter((entry) => entry[1] === numericPinyin);
 
-		if (matchingEntry) {
-			// Get the best definition of the matching entry
-			rawDefinition = getBestDefinition(matchingEntry[2]);
+		if (matchingEntries.length > 0) {
+			// Collect all definitions from matching entries
+			const allMatchingDefinitions = matchingEntries.flatMap((entry) => entry[2]);
+			// Get the best definition from all matching entries
+			rawDefinition = getBestDefinition(allMatchingDefinitions);
 		} else {
-			// If no match found, get the best definition of the first entry
-			rawDefinition = getBestDefinition(entries[0][2]);
+			// If no match found, get the best definition from all entries
+			const allDefinitions = entries.flatMap((entry) => entry[2]);
+			rawDefinition = getBestDefinition(allDefinitions);
 		}
 	}
+
+	console.log(cleanDefinition(rawDefinition));
 
 	return cleanDefinition(rawDefinition);
 };

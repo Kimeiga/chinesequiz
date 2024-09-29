@@ -212,10 +212,11 @@ const getSentences = (result: Result) => {
 };
 
 export const load = async ({ fetch }) => {
-	const seed = makeid(4);
+	// const seed = makeid(4);
 	// const seed = 'ypYa';
 	// const seed = 'iQYd';
 	// const seed = 'D93L';
+	const seed = '7YiK';
 	console.log(seed);
 
 	const response: TatoebaResponse = await fetch(
@@ -240,6 +241,7 @@ export const load = async ({ fetch }) => {
 		traditionalSentence,
 		response,
 		tokenized,
-		translation
+		translation,
+		seed
 	};
 };

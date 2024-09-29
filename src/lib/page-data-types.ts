@@ -7,4 +7,5 @@ export interface PageData {
 	response: TatoebaResponse;
 	tokenized: TokenizedSentence;
 	translation: string;
+	seed: string;
 }
